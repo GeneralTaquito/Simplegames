@@ -23,11 +23,15 @@ public class BreakoutManager : MonoBehaviour
     {
         //I need to register myself as 'the' BreakoutManager
         BreakoutManager.Me = this;
-
         //This is the code for spawning bricks. It's not very good.
         //How could we make this spawn lots of bricks more efficiently?
-        Instantiate(BrickPrefab, new Vector3(0, 1, 0), Quaternion.identity);
-        Instantiate(BrickPrefab, new Vector3(0, 1.5f, 0), Quaternion.identity);
+        for (float x = 7; x >= -7; x-=2)
+        {
+            for (float y = 4; y >= 0; y -= 0.5f)
+            {
+                Instantiate(BrickPrefab, new Vector3(x, y, 0), Quaternion.identity);
+            }
+        }
     }
 
     void Update()
