@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PaddleController : MonoBehaviour
@@ -34,8 +36,13 @@ public class PaddleController : MonoBehaviour
     //AKA-how does aiming with the paddle work
     public float BounceAngle(BallController ball)
     {
+        Vector3 pos = transform.position;
         //Currently, the ball keeps its old X velocity
         //This is an intentionally bad answer--can you fix it?
-        return ball.RB.linearVelocity.x;
+        //return ball.RB.linearVelocity.x;
+        float difference =  ball.RB.transform.position.x - pos.x ;
+            {
+            return difference;
+            }
     }
 }
