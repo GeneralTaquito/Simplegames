@@ -103,15 +103,17 @@ public class PlayerScript : MonoBehaviour
     //I use this function to track if I can jump or not
     //Right now it's very simple, but has a secret edge case bug
     //Can you find the bug?
+    public List<GameObject> Floors;
     public bool CanJump()
     {
         return OnGround;
     }
-
+    
     private void OnCollisionEnter2D(Collision2D other)
     {  
         //If I collide with something solid, mark me as being on the ground
         OnGround = true;
+        Floors.Add(other.gameObject);
 
         //If what I hit was an enemy. . .
         EnemyScript es = other.gameObject.GetComponent<EnemyScript>();
@@ -133,5 +135,6 @@ public class PlayerScript : MonoBehaviour
     {
         //If I stop touching something solid, mark me as not being on the ground
         OnGround = false;
+        Floors.Remove(other.gameObject);
     }
 }
