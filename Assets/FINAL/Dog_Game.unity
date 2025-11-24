@@ -234,12 +234,20 @@ PrefabInstance:
       value: Dog
       objectReference: {fileID: 0}
     - target: {fileID: 8301097803432001201, guid: a5478c8595742464c865581e81dd0437, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8301097803432001201, guid: a5478c8595742464c865581e81dd0437, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8301097803432001201, guid: a5478c8595742464c865581e81dd0437, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.12
+      value: -6.5
       objectReference: {fileID: 0}
     - target: {fileID: 8301097803432001201, guid: a5478c8595742464c865581e81dd0437, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.43
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8301097803432001201, guid: a5478c8595742464c865581e81dd0437, type: 3}
       propertyPath: m_LocalPosition.z
@@ -301,6 +309,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14d142f20aacb17419d387783740fd05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PS: {fileID: 0}
+  SR: {fileID: 0}
+  AS: {fileID: 0}
+  decideMove: 0
+  startPos: {x: 0, y: 0, z: 0}
+  endPos: {x: 7.5, y: 0, z: 0}
+  delta: 1
+  Speed: 1
 --- !u!61 &472094669
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -637,7 +653,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 1}
+  m_Color: {r: 0.12814355, g: 0.3018868, b: 0.009967966, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
