@@ -11,8 +11,8 @@ public class Dog_Script : MonoBehaviour
     public int decideMove;
     public Vector3 startPos;
     public Vector3 endPos;
-    public float delta = 1f;
-    public float Speed = 1f;
+    public Vector3 Dest;
+    public float Speed = 2f;
 
     void Start()
     {
@@ -20,21 +20,22 @@ public class Dog_Script : MonoBehaviour
         decideMove = Random.Range(1, 3);
         endPos.x = Random.Range(-3, 7);
         endPos.y = startPos.y;
+        Dest = endPos;
+        
     }
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, endPos, Speed * Time.deltaTime);
-
-        
-    }
-
-    public void Moveback()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, startPos, Speed * Time.deltaTime);
-    }
-
-    void OnMouseDown()
-    {
-
+        if (transform.position != Dest)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, Dest, Speed * Time.deltaTime);
+        }
+        else
+        {
+            Dest = startPos;
+        }
+        //if (transform.position == endPos)
+        //{
+        //    transform.position = Vector3.MoveTowards(transform.position, startPos, Speed * Time.deltaTime);
+        //}
     }
 }
