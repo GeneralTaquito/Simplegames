@@ -1,3 +1,5 @@
+using NUnit.Framework.Internal;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 
 public class Dog_Script : MonoBehaviour
@@ -8,34 +10,30 @@ public class Dog_Script : MonoBehaviour
     public AudioSource AS;
 
     //Movement
-    public int decideMove;
-    public Vector3 startPos;
-    public Vector3 endPos;
-    public Vector3 Dest;
     public float Speed = 2f;
+    public float goingX;
+    public Vector3 Dest;
+    public Vector3 startpos;
 
     void Start()
     {
-        startPos = transform.position;
-        decideMove = Random.Range(1, 3);
-        endPos.x = Random.Range(-3, 7);
-        endPos.y = startPos.y;
-        Dest = endPos;
-        
+        startpos = transform.position;
+        Dest.y = startpos.y;
+        goingX = Random.Range(-7, 7);
+        Dest.x = goingX;
     }
     void Update()
     {
-        if (transform.position != Dest)
+        if (transform.position == Dest)
+        {
+            goingX = Random.Range(-7, 7);
+            Dest.x = goingX;
+            transform.Rotate(0, 180, 0);
+        }
+        else if (transform.position != Dest)
         {
             transform.position = Vector3.MoveTowards(transform.position, Dest, Speed * Time.deltaTime);
         }
-        else
-        {
-            Dest = startPos;
-        }
-        //if (transform.position == endPos)
-        //{
-        //    transform.position = Vector3.MoveTowards(transform.position, startPos, Speed * Time.deltaTime);
-        //}
+        
     }
 }
