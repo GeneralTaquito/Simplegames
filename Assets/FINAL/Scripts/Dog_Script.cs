@@ -34,6 +34,7 @@ public class Dog_Script : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, Dest, Speed * Time.deltaTime);
         }
-        
+
     }
+
 }
