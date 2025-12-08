@@ -23,5 +23,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/FINAL/Dog_Game.unity
     guid: 0c78928eee0cddc45bf924c39bf75a50
+  - enabled: 1
+    path: Assets/FINAL/End.unity
+    guid: d76d2ab84ae8c4045a3a89acd1bb6596
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
