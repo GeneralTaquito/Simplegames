@@ -35,4 +35,5 @@ public class DogFood_Script : MonoBehaviour, IDragHandler,IBeginDragHandler,IEnd
         canvasGroup.blocksRaycasts = true;
         Destroy(gameObject);
     }
+    //This will of course drag the image along with the mouse but also create a copy at its original position to give the illusion of source of food your pulling from
 }

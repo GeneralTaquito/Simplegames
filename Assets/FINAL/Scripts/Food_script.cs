@@ -13,4 +13,5 @@ public class Food_script : MonoBehaviour
     {
         Hunger_Slider.value = Hunger;
     }
+    // This is how the UI slider and the code combine to be used in other scripts like the Dog_Script
 }

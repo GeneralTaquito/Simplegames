@@ -12,9 +12,7 @@ public class Dog_Script : MonoBehaviour
     public AudioSource AS;
     public AudioClip[] Barks;
 
-    //Misc.
-    public Bowl_Script Bowlisfull;
-    public bool Nothungry;
+    //sprites
     public SpriteRenderer SR;
     public Sprite cheerful;
     public Sprite normal;
@@ -23,7 +21,8 @@ public class Dog_Script : MonoBehaviour
     public Food_script food_script;
     public int maxHunger = 100;
     public int CurrentHunger;
-
+    public Bowl_Script Bowlisfull;
+    public bool Nothungry;
 
     //Movement
     public float Speed = 2f;
@@ -31,14 +30,16 @@ public class Dog_Script : MonoBehaviour
     public Vector3 Dest;
     public Vector3 startpos;
     public Vector3 Bowldes;
+    public Vector3 Rotate = new Vector3(0f, 0f, 0f);
 
     void Start()
     {
+        //Hunger stuff
         CurrentHunger = maxHunger;
         food_script.HungerMax(maxHunger);
         InvokeRepeating("Starve", 0f, 3f);
 
-        //Move
+        //Move stuff
         startpos = transform.position;
         Dest.y = startpos.y;
         Bowldes.y = startpos.y;
@@ -52,10 +53,10 @@ public class Dog_Script : MonoBehaviour
     }
     void Update()
     {
+        // TLDR: random movement every moment and once the bowl is full the dog will move towards the bowl 
+        // then the dog will eat some food and resume its randomized pathing 
         if (Nothungry)
         {
-
-
             if (transform.position == Dest)
             {
                 goingX = Random.Range(-7, 7);
@@ -72,6 +73,7 @@ public class Dog_Script : MonoBehaviour
             Debug.Log("walking");
             if (transform.position != Bowldes)
             {
+                transform.localEulerAngles = Rotate;
                 transform.position = Vector3.MoveTowards(transform.position, Bowldes, Speed * Time.deltaTime);
             }
             else
@@ -81,12 +83,16 @@ public class Dog_Script : MonoBehaviour
             }
             food_script.HungerValue(CurrentHunger);
         }
-        // dies
+
+
+        // Dying
         if (CurrentHunger == 0)
         {
             SceneManager.LoadScene("End");
         }
     }
+
+    // Clicking makes the dog bark and gives it a happy facial expression
     public void OnMouseDown()
     {
         AudioClip randomclip = Barks[Random.Range(0, 4)];
@@ -94,11 +100,14 @@ public class Dog_Script : MonoBehaviour
         SR.sprite = cheerful;
         StartCoroutine(NoCheer());
     }
+    // It will wait after the sprite has changed to go back
     IEnumerator NoCheer()
     {
         yield return new WaitForSeconds(1);
         SR.sprite = normal;
     }
+
+    // Stuff called in other chunks
     void Starve()
     {
         CurrentHunger -= 10;
